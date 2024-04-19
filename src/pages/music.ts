@@ -37,7 +37,7 @@ async function getSavedMusic() {
     }).then((res) => res.data);
 }
 
-export async function GET({ params }: { params?: any }) {
+export async function GET() {
     if(!token) {
         token = await getFreshToken();
     }
@@ -52,6 +52,6 @@ export async function GET({ params }: { params?: any }) {
         );
     } catch(error) {
         token = await getFreshToken();
-        await GET({});
+        await GET();
     }
 }
