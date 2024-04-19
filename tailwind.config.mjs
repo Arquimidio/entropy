@@ -20,9 +20,15 @@ export default {
 				"\"Noto Color Emoji\""
 			]
 		},
-		extend: {},
-		applyBaseStyles: false
+		extend: {
+			colors: {
+				"light": "#ebebeb",
+				"dark": "#13151a",
+			}
+		},
+		applyBaseStyles: false,
 	},
+	darkMode: 'selector',
 	plugins: [
 		require("@tailwindcss/typography")
 	],

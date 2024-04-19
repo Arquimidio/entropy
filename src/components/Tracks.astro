@@ -1,0 +1,11 @@
+---
+import { GET } from "../pages/music";
+import Track from "./Track.astro";
+
+const { tracks } = await GET(Astro).then((response) => response.json());
+---
+
+<div class="flex flex-col gap-3">
+    <div class="text-lg font-medium text-slate-800 dark:text-slate-200">Liked Spotify Tracks</div>
+    {tracks.map((track, index) => <Track key={track + index} track={track} />)}
+</div>

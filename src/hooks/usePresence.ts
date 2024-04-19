@@ -37,6 +37,7 @@ export default function usePresence(userDiscordId: string) {
         return () => {
             ws.removeEventListener('message', handleMessage);
             clearInterval(hearbeatInterval);
+            ws.close();
         }
     }, [])
 

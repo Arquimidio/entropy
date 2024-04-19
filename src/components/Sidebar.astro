@@ -1,7 +1,9 @@
 ---
 import CurrentSpotify from "./React/CurrentSpotify";
+import Tracks from "./Tracks.astro";
 ---
 
 <aside class="basis-[360px] flex flex-col gap-4">
   <CurrentSpotify client:load />
+  <Tracks />
 </aside>

@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  * {
+    @apply transition-colors duration-100;
+  }
+
   .clip {
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 20% 100%);
   }
