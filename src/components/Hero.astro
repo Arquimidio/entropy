@@ -1,6 +1,7 @@
 ---
 import Icons from "./Icons.astro";
 import { Image } from "astro:assets";
+import Anime from "../images/anime.jpg";
 ---
 
 <section
@@ -30,9 +31,9 @@ import { Image } from "astro:assets";
   </div>
   <div class="max-w-[300px] lg:max-w-[360px] h-min flex-shrink-1 my-5 md:my-0">
     <Image
-      src="/images/anime.jpg"
-      width={400}
-      height={400}
+      src={Anime}
+      width={600}
+      height={600}
       alt="Gabriel's anime representation"
       class="rounded-md flex-grow-0 h-full w-full aspect-ratio"
     />
