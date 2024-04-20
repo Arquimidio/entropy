@@ -9,8 +9,6 @@ export default function CurrentSpotify() {
 
     const { spotify } = presenceData as PresenceData;
 
-    console.log(spotify);
-    
     return (
         <div className="flex flex-col gap-4">
             <div className="text-lg font-medium text-slate-800 dark:text-slate-200">🎧 I'm listening to</div>
