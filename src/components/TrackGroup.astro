@@ -16,7 +16,7 @@ const [label, tracks] = trackGroup;
     </div>
     <div class="flex flex-col gap-2">
         {
-            tracks.map((track) => <Track track={track} />)
+            tracks.map((track: any) => <Track track={track} />)
         }
     </div>
 </div>
