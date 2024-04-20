@@ -1,11 +1,11 @@
 ---
 author: gabriel-stoppa
-categories: ['React', 'NestJS']
-date: 15/04/2024
+categories: ['System Design', 'Planning']
+date: 2024-04-19T23:10:55+0000
 featured: false
-image: ./images/test.webp
-description: Yes, i'm just testing this super cool functionality
-title: Another Blog Post
+image: ./images/bridge.png
+title: You wouldn't build a bridge without proper planning
+description: So why do you do this to your system?
 ---
 
 ## Introduction

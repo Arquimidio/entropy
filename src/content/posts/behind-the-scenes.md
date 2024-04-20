@@ -1,11 +1,11 @@
 ---
 author: gabriel-stoppa
-categories: ['React', 'NestJS']
-date: 15/04/2024
+categories: ['Algorithms', 'Object Oriented Programming']
+date: 2024-04-19T23:10:55+0000
 featured: false
-image: ./images/test.webp
-description: When i hear the raindrop, i cant stop the dogs of war
-title: This is slughshines
+image: ./images/algorithm.png
+title: Algorithms are cake recipes, objects are cake pans
+description: How objects shape abstractions to make systems
 ---
 
 I just want to test this

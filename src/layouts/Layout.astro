@@ -1,6 +1,7 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import "../styles/base.css";
+import {ThemeSelector} from "../components/React/ThemeSelector";
+import ThemeLoader from "../components/ThemeLoader.astro";
 
 interface Props {
   title: string;
@@ -17,41 +18,19 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
+    <ThemeLoader />
     <title>{title}</title>
   </head>
-  <body class="flex justify-center h-[100vh] font-default">
-    <div class="flex flex-col order-2 text-white max-w-[1300px] w-[95%]">
+  <body class="flex relative justify-center h-[100vh] dark:bg-dark bg-light font-default">
+    <div class="absolute top-0 left-0 w-full h-full bg-hero-pattern z-0 mask"></div>
+    <div class="flex flex-col order-2 text-slate-700 dark:text-slate-200 max-w-[1150px] w-[95%] z-10">
+      <header>
+        <nav class="flex justify-end items-end flex-grow py-5">
+          <ThemeSelector client:load />
+        </nav>
+      </header>
       <slot />
     </div>
-    <style is:global>
-      :root {
-        --accent: 136, 58, 234;
-        --accent-light: 224, 204, 250;
-        --accent-dark: 49, 10, 101;
-        --accent-gradient: linear-gradient(
-          45deg,
-          rgb(var(--accent)),
-          rgb(var(--accent-light)) 30%,
-          white 60%
-        );
-      }
-      html {
-        font-family: system-ui, sans-serif;
-        background: #13151a;
-        background-size: 224px;
-      }
-      code {
-        font-family:
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
-      }
-    </style>
   </body>
 </html>

@@ -2,6 +2,13 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<Icon class="text-slate-300" name="x" width={25} height={25} />
-<Icon class="text-slate-300" name="github" width={30} height={30} />
-<Icon class="text-slate-300" name="linkedin" width={30} height={30} />
+<a href={import.meta.env.TWITTER_URL}>
+    <Icon name="x" class="text-slate-800 dark:text-slate-200" width={25} height={25} />
+</a>
+<a href={import.meta.env.GITHUB_URL} target="_blank">
+    <Icon name="github" class="text-slate-800 dark:text-slate-200" width={30} height={30} />
+</a>
+<a href={import.meta.env.LINKEDIN_URL} target="_blank">
+    <Icon name="linkedin" class="text-slate-800 dark:text-slate-200" width={30} height={30} />
+</a>
+

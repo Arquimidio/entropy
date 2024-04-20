@@ -1,0 +1,27 @@
+---
+import { GET } from "../pages/music";
+import moment from "moment";
+import TrackGroup from "./TrackGroup.astro";
+
+const response = await GET().then((response: any) => response?.json());
+const tracks = response?.tracks;
+
+const trackGroups = tracks?.reduce((acc: any, cur: any) => {
+    const momentExpression = moment(cur.added_at).fromNow();
+    acc[momentExpression] = momentExpression in acc ? [...acc[momentExpression], cur] : [cur];
+
+    return acc;
+} , {}) ?? {}
+
+---
+
+<div class="flex flex-col gap-4">
+    <div class="text-lg font-medium text-slate-800 dark:text-slate-200">💿 Liked Tracks</div>
+    <div class="flex flex-col gap-6">
+        {
+            Object
+                .entries(trackGroups)
+                .map((track: any) => <TrackGroup trackGroup={track} />)
+        }
+    </div>
+</div>

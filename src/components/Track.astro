@@ -1,0 +1,22 @@
+---
+interface Props {
+    track: any;
+}
+
+const { track: trackContainer } = Astro.props;
+
+const { track } = trackContainer;
+
+---
+
+<a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+    <div class="flex gap-4 items-center">
+        <div class="w-[68px] rounded-md overflow-hidden flex-shrink-0">
+            <img src={track?.album?.images?.[0]?.url} alt="track image" />
+        </div>
+        <div class="flex flex-col leading-3">
+            <span class="text-sm font-semibold text-slate-600 dark:text-slate-300 line-clamp-1">{track?.name}</span>
+            <span class="text-sm text-slate-400 dark:text-slate-600 line-clamp-1">{track?.artists?.[0]?.name}</span>
+        </div>
+    </div>
+</a>

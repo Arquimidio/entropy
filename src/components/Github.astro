@@ -1,0 +1,10 @@
+---
+import axios from "axios";
+const githubData = await axios
+        .get(import.meta.env.GITHUB_API_URL)
+        .then(res => res.data);
+---
+
+<section>
+    <div>Github</div>
+</section>

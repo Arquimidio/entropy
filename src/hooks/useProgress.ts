@@ -30,7 +30,5 @@ export default function useProgress({
 
     const total = end - start;
 
-    const progressPercentage = 100 - Math.floor((curPosition / total) * 100);
-
-    return progressPercentage;
+    return 100 - Math.floor((curPosition / total) * 100);
 }

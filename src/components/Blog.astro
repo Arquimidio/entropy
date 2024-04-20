@@ -1,6 +1,6 @@
 ---
-import { getCollection } from "astro:content";
 import ArticleLink from "./ArticleLink.astro";
+import moment from "moment";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
@@ -10,6 +10,6 @@ interface Props {
 const { posts } = Astro.props;
 ---
 
-<div class="flex flex-col gap-5">
-  {posts.map((post: any) => <ArticleLink post={post} />)}
+<div class="flex flex-col gap-4">
+  {posts?.map((post: any) => <ArticleLink post={post} />)}
 </div>

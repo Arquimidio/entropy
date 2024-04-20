@@ -6,14 +6,9 @@ import Main from "../components/Main.astro";
 ---
 
 <Layout title="Entropy">
-  <header>
-    <nav class="flex justify-end items-end flex-grow py-5">
-      <div>Darkmode</div>
-    </nav>
-  </header>
   <main class="flex flex-col gap-5">
     <Hero />
-    <section class="flex flex-col gap-10 md:flex-row">
+    <section class="flex flex-col gap-10 lg:flex-row">
       <Main />
       <Sidebar />
     </section>
