@@ -1,9 +1,9 @@
 ---
 author: gabriel-stoppa
 categories: ['React', 'NestJS']
-date: 15/04/2024
+date: 2024-04-19T23:10:55+0000
 featured: false
-image: ./images/test.webp
+image: ./images/algorithm.png
 description: Click to discover nothing more than more placeholders
 title: Any Placeholder
 ---

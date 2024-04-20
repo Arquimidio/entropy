@@ -2,6 +2,7 @@ export const prerender = false;
 import * as querystring from "node:querystring";
 import axios from "axios";
 
+const FAVORITE_SONGS_THRESHOLD = 5;
 let refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 let token: string | null = null;
 
@@ -25,21 +26,28 @@ async function getFreshToken() {
             refresh_token: refreshToken
         }),
         authOptions
-    ).then(res => res.data.access_token);
+    ).then(res => res.data.access_token)
+        .catch((err) => console.log(err));
 }
 
 async function getSavedMusic() {
     const tracksUrl = import.meta.env.SPOTIFY_TRACKS_URL as string;
-    return await axios.get(`${tracksUrl}?limit=5`, {
+    return await axios.get(`${tracksUrl}?limit=${FAVORITE_SONGS_THRESHOLD}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
-    }).then((res) => res.data);
+    })
+        .then((res) => res.data)
+        .catch((e) => console.log(e));
 }
 
 export async function GET() {
     if(!token) {
-        token = await getFreshToken();
+        try  {
+            token = await getFreshToken();
+        } catch(error) {
+            console.log(error);
+        }
     }
 
     try {
@@ -51,7 +59,6 @@ export async function GET() {
             }),
         );
     } catch(error) {
-        token = await getFreshToken();
-        await GET();
+        console.log(error);
     }
 }

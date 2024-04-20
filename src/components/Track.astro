@@ -7,18 +7,17 @@ interface Props {
 
 const { track: trackContainer } = Astro.props;
 
-const { added_at: addedAt, track} = trackContainer;
+const { track } = trackContainer;
 ---
 
-<div>
-    <div class="text-slate-400">{ moment(addedAt).fromNow() }</div>
+<a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
     <div class="flex gap-4 items-center">
         <div class="w-[75px] rounded-md overflow-hidden">
             <img src={track?.album?.images?.[0]?.url} alt="track image" />
         </div>
-        <div class="flex flex-col gap-1">
-            <span class="text-lg text-slate-300">{track?.name}</span>
-            <span class="text-sm text-slate-500">{track?.artists?.[0]?.name}</span>
+        <div class="flex flex-col">
+            <span class="text-lg text-slate-600 dark:text-slate-400 line-clamp-1">{track?.name}</span>
+            <span class="text-sm text-slate-400 dark:text-slate-600 line-clamp-1">{track?.artists?.[0]?.name}</span>
         </div>
     </div>
-</div>
+</a>

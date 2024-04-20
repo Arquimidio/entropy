@@ -3,43 +3,68 @@ import { PresenceSocketOperation, type PresenceData } from "../types/discordPres
 
 export default function usePresence(userDiscordId: string) {
     const [presenceData, setPresenceData] = useState<PresenceData | null>(null);
+    const [heartBeatInterval, setHeartBeatInterval] = useState<any | null>(null);
 
-    useEffect(() => {
-        const ws = new WebSocket('wss://api.lanyard.rest/socket');
-        let hearbeatInterval: any;
+    function pumpHeart(socket: WebSocket) {
+        if(socket.readyState === socket.OPEN) {
+            socket.send(JSON.stringify({
+                op: PresenceSocketOperation.Hearbeat
+            }))
+            console.log('THUMP THUMP');
+        } else {
+            console.log(`HEART STOPPED! Reason: ${socket.readyState}`);
+        }
+    }
 
-        const handleMessage = (response: any) => {
-            
-            const data = JSON.parse(response.data);
-
-            if(data.op === PresenceSocketOperation.Hello) {
-                const initializationResponse = {
-                    op: PresenceSocketOperation.Initialize,
-                    d: {
-                        subscribe_to_id: userDiscordId
-                    }
-                }
-
-                ws.send(JSON.stringify(initializationResponse));
-
-                hearbeatInterval = setInterval(() => {
-                    ws.send(JSON.stringify({
-                        op: PresenceSocketOperation.Hearbeat
-                    }))
-                }, data?.d?.heartbeat_interval)
-            } else if(PresenceSocketOperation.Event === 0) {
-                setPresenceData(data.d);
+    function handleInitializationMessage(data: any, socket: WebSocket) {
+        const initializationResponse = {
+            op: PresenceSocketOperation.Initialize,
+            d: {
+                subscribe_to_id: userDiscordId
             }
         }
 
-        ws.addEventListener('message', handleMessage)
+        socket.send(JSON.stringify(initializationResponse));
 
-        return () => {
-            ws.removeEventListener('message', handleMessage);
-            clearInterval(hearbeatInterval);
-            ws.close();
+        return setInterval(() => pumpHeart(socket), data?.d?.heartbeat_interval)
+    }
+
+    function handleSocketMessage(socket: WebSocket, message: any) {
+        const data = JSON.parse(message.data);
+
+        if(data.op === PresenceSocketOperation.Hello) {
+            setHeartBeatInterval(handleInitializationMessage(data, socket));
+        } else if(PresenceSocketOperation.Event === 0) {
+            setPresenceData(data.d);
         }
+    }
+
+    useEffect(() => {
+        function initialize() {
+            const socket = new WebSocket('wss://api.lanyard.rest/socket');
+            const handleSocketMessageWrapper = handleSocketMessage.bind(null, socket);
+
+            function cleanup() {
+                socket.removeEventListener('message', handleSocketMessageWrapper);
+                socket.removeEventListener('close', handleClose);
+                clearInterval(heartBeatInterval);
+                socket?.close();
+            }
+
+            function handleClose() {
+                cleanup();
+                initialize();
+            }
+
+            socket.addEventListener('message', handleSocketMessageWrapper);
+            socket.addEventListener('close', handleClose);
+
+            return cleanup;
+        }
+
+        return initialize();
     }, [])
 
-    return presenceData;
+
+    return [presenceData, true] as [PresenceData, boolean];
 }

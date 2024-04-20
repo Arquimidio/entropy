@@ -4,6 +4,6 @@ import Tracks from "./Tracks.astro";
 ---
 
 <aside class="basis-[360px] flex flex-col gap-4">
-  <CurrentSpotify client:load />
+  <CurrentSpotify client:load client:only="react" />
   <Tracks />
 </aside>

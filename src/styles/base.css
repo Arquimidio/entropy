@@ -10,4 +10,8 @@
   .clip {
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 20% 100%);
   }
+
+  .mask {
+    mask-image: linear-gradient(0deg, transparent, black);
+  }
 }
