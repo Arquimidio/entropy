@@ -14,4 +14,8 @@
   .mask {
     mask-image: linear-gradient(0deg, transparent, black);
   }
+
+  .aspect-ratio {
+    aspect-ratio: 1 / 1;
+  }
 }
