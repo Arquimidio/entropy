@@ -1,6 +1,6 @@
 ---
 import "../styles/base.css";
-import {ThemeSelector} from "../components/React/ThemeSelector";
+import { ThemeSelector } from "../components/React/ThemeSelector";
 import ThemeLoader from "../components/ThemeLoader.astro";
 
 interface Props {
@@ -22,9 +22,14 @@ const { title } = Astro.props;
     <ThemeLoader />
     <title>{title}</title>
   </head>
-  <body class="flex relative justify-center h-[100vh] dark:bg-dark bg-light font-default">
-    <div class="absolute top-0 left-0 w-full h-full bg-hero-pattern z-0 mask"></div>
-    <div class="flex flex-col order-2 text-slate-700 dark:text-slate-200 max-w-[1150px] w-[95%] z-10">
+  <body
+    class="flex relative justify-center h-[100vh] dark:bg-dark bg-light font-default"
+  >
+    <div class="absolute top-0 left-0 w-full h-full bg-hero-pattern z-0 mask">
+    </div>
+    <div
+      class="flex flex-col order-2 text-slate-700 dark:text-slate-200 max-w-[1150px] w-[95%] z-10"
+    >
       <header>
         <nav class="flex justify-end items-end flex-grow py-5">
           <ThemeSelector client:load />

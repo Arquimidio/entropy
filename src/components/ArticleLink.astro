@@ -7,7 +7,8 @@ interface Props {
   post: CollectionEntry<"posts">;
 }
 const AVERAGE_WORDS_READ_PER_MINUTE = 200;
-const calculateReadTime = (body: string) => Math.floor(body.split(/\s/).length / AVERAGE_WORDS_READ_PER_MINUTE);
+const calculateReadTime = (body: string) =>
+  Math.floor(body.split(/\s/).length / AVERAGE_WORDS_READ_PER_MINUTE);
 const { post } = Astro.props;
 ---
 
@@ -16,16 +17,26 @@ const { post } = Astro.props;
     class="flex justify-between px-5 lg:pr-0 border border-gray-400 dark:border-gray-800 gap-10 rounded-md min-h-32"
   >
     <div class="flex flex-col flex-grow justify-center py-2">
-      <h2 class="text-xl line-clamp-2 text-slate-800 dark:text-slate-200">{post.data.title}</h2>
+      <h2 class="text-xl line-clamp-2 text-slate-800 dark:text-slate-200">
+        {post.data.title}
+      </h2>
       <span class="font-thin text-gray-600 dark:text-gray-400"
         >{post.data.description}</span
       >
-      <span class="text-sm text-gray-600">Posted {moment(post.data.date).fromNow()}</span>
+      <span class="text-sm text-gray-600"
+        >Posted {moment(post.data.date).fromNow()}</span
+      >
       <hr class="w-full h-[1px] border-slate-300 dark:border-slate-800 my-2" />
       <div class="text-xs flex gap-4">
-        <span class="text-slate-800 dark:text-slate-300">{calculateReadTime(post.body)} min read</span>
+        <span class="text-slate-800 dark:text-slate-300"
+          >{calculateReadTime(post.body)} min read</span
+        >
         <div class="flex gap-2">
-          {post.data.categories.map((tag) => <span class="text-slate-400 dark:text-slate-500">{tag}</span>)}
+          {
+            post.data.categories.map((tag: any) => (
+              <span class="text-slate-400 dark:text-slate-500">{tag}</span>
+            ))
+          }
         </div>
       </div>
     </div>

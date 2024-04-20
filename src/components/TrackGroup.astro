@@ -1,7 +1,7 @@
 ---
 import Track from "./Track.astro";
 interface Props {
-    trackGroup: any;
+  trackGroup: any;
 }
 
 const { trackGroup } = Astro.props;
@@ -9,14 +9,12 @@ const [label, tracks] = trackGroup;
 ---
 
 <div class="flex flex-col gap-4">
-    <div class="text-slate-600 dark:text-slate-300 flex gap-2 items-center">
-        <hr class="w-5 h-px bg-gray-300 border-0 dark:bg-gray-700">
-        <div class="w-fit font-semibold text-slate-500 text-sm">{ label }</div>
-        <hr class="flex-grow h-px bg-gray-300 border-0 dark:bg-gray-700">
-    </div>
-    <div class="flex flex-col gap-2">
-        {
-            tracks.map((track: any) => <Track track={track} />)
-        }
-    </div>
+  <div class="text-slate-600 dark:text-slate-300 flex gap-2 items-center">
+    <hr class="w-5 h-px bg-gray-300 border-0 dark:bg-gray-700" />
+    <div class="w-fit font-semibold text-slate-500 text-sm">{label}</div>
+    <hr class="flex-grow h-px bg-gray-300 border-0 dark:bg-gray-700" />
+  </div>
+  <div class="flex flex-col gap-2">
+    {tracks.map((track: any) => <Track track={track} />)}
+  </div>
 </div>
