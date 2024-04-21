@@ -2,7 +2,7 @@
 import "../styles/base.css";
 import { ThemeSelector } from "../components/React/ThemeSelector";
 import ThemeLoader from "../components/ThemeLoader.astro";
-import ArrowLeft from "../components/ArrowLeft.astro";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   title: string;
@@ -20,7 +20,6 @@ const isHome = Astro.url.pathname === "/";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <!-- <ViewTransitions /> -->
     <ThemeLoader />
     <title>{title}</title>
   </head>
@@ -39,9 +38,12 @@ const isHome = Astro.url.pathname === "/";
           {
             !isHome && (
               <a href="/">
-                <div class="fill-dark dark:fill-light">
-                  <ArrowLeft />
-                </div>
+                <Icon
+                  name="arrow-left"
+                  class="fill-dark dark:fill-light"
+                  width={40}
+                  height={40}
+                />
               </a>
             )
           }
