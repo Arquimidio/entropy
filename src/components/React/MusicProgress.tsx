@@ -17,8 +17,8 @@ export default function MusicProgress({
     });
 
     return (
-        <div className="w-full h-[6px] bg-gray-400 dark:bg-slate-800 rounded-md overflow-hidden">
-            <div className="bg-gray-300 dark:bg-slate-600 h-full" style={{
+        <div className="w-full h-[2px] bg-gray-400 dark:bg-slate-800 rounded-md overflow-hidden">
+            <div className="bg-rose-600 h-full" style={{
                 width: `${Math.min(100, progressPercentage)}%`,
             }}></div>
         </div>
