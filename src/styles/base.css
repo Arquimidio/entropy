@@ -18,4 +18,18 @@
   .aspect-ratio {
     aspect-ratio: 1 / 1;
   }
+
+  .light-pattern,
+  .dark-pattern {
+    mask-image: linear-gradient(0deg, transparent, black);
+  }
+
+
+  .light-pattern {
+    background-image: url('../images/circuit-board-light.svg');
+  }
+
+  .dark-pattern {
+    background-image: url('../images/circuit-board-dark.svg');
+  }
 }
