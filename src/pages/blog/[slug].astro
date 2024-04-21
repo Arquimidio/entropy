@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import { calculateReadTime } from "../../utils/time";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
@@ -29,8 +30,17 @@ const { Content } = await post?.render();
 
 <Layout title={post.data.title}>
   <main class="flex flex-col gap-5">
-    <h1 class="font-bold text-5xl">{post.data.title}</h1>
-    <Image class="rounded-lg" src={post.data.image} alt={post.data.title} />
+    <div class="flex flex-col items-center w-full gap-2 mb-5">
+      <div>
+        <div class="text-3xl">{calculateReadTime(post.body)} min read</div>
+        <h1 class="font-bold text-5xl max-w-[800px]">{post.data.title}</h1>
+      </div>
+    </div>
+    <Image
+      class="rounded-lg w-full"
+      src={post.data.image}
+      alt={post.data.title}
+    />
     <div class="prose prose-2xl prose-h2:text-red-400 prose-h1:text-red-500">
       <Content />
     </div>

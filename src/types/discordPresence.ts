@@ -6,8 +6,8 @@ export enum PresenceSocketOperation {
 }
 
 export interface PresenceData {
-    kv: {}; // Can be any object type
-    spotify?: SpotifyData; // Optional Spotify data
+    kv: {};
+    spotify?: SpotifyData;
     discord_user: DiscordUser;
     activities: Activity[];
     discord_status: string;
@@ -37,9 +37,9 @@ export interface PresenceData {
     avatar: string;
     discriminator: string;
     bot: boolean;
-    clan: null; // Can be any type or null
+    clan: null;
     global_name: string;
-    avatar_decoration_data: null; // Can be any type or null
+    avatar_decoration_data: null;
     display_name: string;
     public_flags: number;
   }
@@ -51,15 +51,15 @@ export interface PresenceData {
     state?: string;
     emoji?: Emoji;
     created_at: number;
-    flags?: number; // Optional flag for non-custom activities
-    session_id?: string; // Optional session id for Spotify activity
-    details?: string; // Optional details for Spotify activity
-    timestamps?: Timestamps; // Optional timestamps for Spotify activity
+    flags?: number; 
+    session_id?: string; 
+    details?: string;
+    timestamps?: Timestamps;
     assets?: {
       large_image?: string;
       large_text?: string;
     };
-    sync_id?: string; // Optional sync id for Spotify activity
+    sync_id?: string;
     party?: {
       id: string;
     };
