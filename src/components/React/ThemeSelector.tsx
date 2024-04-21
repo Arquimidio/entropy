@@ -11,7 +11,7 @@ export function ThemeSelector() {
 
 
     return (
-        <div className="cursor-pointer fill-dark dark:fill-light" onClick={changeTheme}>
+        <div className="cursor-pointer fill-dark dark:fill-light ml-auto" onClick={changeTheme}>
             <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 48 48">
                 <defs>
                     <mask id="ipSDarkMode0">

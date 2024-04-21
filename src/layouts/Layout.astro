@@ -2,12 +2,14 @@
 import "../styles/base.css";
 import { ThemeSelector } from "../components/React/ThemeSelector";
 import ThemeLoader from "../components/ThemeLoader.astro";
+import ArrowLeft from "../components/ArrowLeft.astro";
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+const isHome = Astro.url.pathname === "/";
 ---
 
 <!doctype html>
@@ -33,7 +35,16 @@ const { title } = Astro.props;
       class="flex flex-col order-2 text-slate-700 dark:text-slate-200 z-10 w-full items-center"
     >
       <header class="w-full">
-        <nav class="flex justify-end items-end flex-grow w-full p-10">
+        <nav class="flex items-center flex-grow w-full p-10">
+          {
+            !isHome && (
+              <a href="/">
+                <div class="fill-dark dark:fill-light">
+                  <ArrowLeft />
+                </div>
+              </a>
+            )
+          }
           <ThemeSelector client:load />
         </nav>
       </header>
