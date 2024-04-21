@@ -8,6 +8,4 @@ title: You wouldn't build a bridge without proper planning
 description: So why do you do this to your system?
 ---
 
-## Introduction
-
 Ok, this works pretty fine

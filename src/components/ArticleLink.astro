@@ -25,7 +25,7 @@ const { post } = Astro.props;
       <span class="text-sm text-gray-600"
         >Posted {moment(post.data.date).fromNow()}</span
       >
-      <hr class="w-full h-[1px] border-slate-300 dark:border-slate-800 my-2" />
+      <hr class="w-full separator my-2" />
       <div class="text-xs flex gap-4">
         <span class="text-slate-800 dark:text-slate-300"
           >{calculateReadTime(post.body)} min read</span

@@ -3,6 +3,8 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { calculateReadTime } from "../../utils/time";
+import ArticleCategory from "../../components/ArticleCategory.astro";
+import moment from "moment";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
@@ -29,20 +31,50 @@ const { Content } = await post?.render();
 ---
 
 <Layout title={post.data.title}>
-  <main class="flex flex-col gap-5">
-    <div class="flex flex-col items-center w-full gap-2 mb-5">
-      <div>
-        <div class="text-3xl">{calculateReadTime(post.body)} min read</div>
-        <h1 class="font-bold text-5xl max-w-[800px]">{post.data.title}</h1>
+  <main class="flex flex-col items-center gap-5">
+    <div class="center-container">
+      <div class="flex flex-col items-center w-full gap-2 mb-5">
+        <div>
+          <div class="text-xl text-rose-500 font-bold leading-[2rem] uppercase">
+            {calculateReadTime(post.body)} min read
+          </div>
+          <h1
+            class="font-bold text-5xl max-w-[900px] text-slate-800 dark:text-slate-200 leading-[4rem]"
+          >
+            {post.data.title}
+          </h1>
+        </div>
+      </div>
+      <Image
+        class="rounded-lg w-full"
+        src={post.data.image}
+        alt={post.data.title}
+      />
+      <div
+        class="text-center text-3xl text-slate-300 dark:text-slate-500 font-semibold my-10"
+      >
+        {post.data.description}
       </div>
     </div>
-    <Image
-      class="rounded-lg w-full"
-      src={post.data.image}
-      alt={post.data.title}
-    />
-    <div class="prose prose-2xl prose-h2:text-red-400 prose-h1:text-red-500">
-      <Content />
+    <hr class="w-screen separator" />
+    <div class="article-md w-full">
+      <div class="content-grid">
+        <div class="col-start-2">
+          <div class="flex justify-between items-center">
+            <div class="flex gap-2">
+              {
+                post.data.categories.map((category) => (
+                  <ArticleCategory category={category} />
+                ))
+              }
+            </div>
+            <div class="text-base font-medium">
+              Published {moment(post.data.date).format("MMM Do[,] YYYY")}
+            </div>
+          </div>
+          <Content />
+        </div>
+      </div>
     </div>
   </main>
 </Layout>

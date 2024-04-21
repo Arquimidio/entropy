@@ -9,5 +9,3 @@ description: Click to discover nothing more than more placeholders
 ---
 
 I just want to test this
-
-# Introduction
