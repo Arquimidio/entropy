@@ -1,0 +1,20 @@
+---
+import moment from "moment";
+import ArticleCategory from "./ArticleCategory.astro";
+
+interface Props {
+  categories: string[];
+  publicationDate: string;
+}
+
+const { categories, publicationDate } = Astro.props;
+---
+
+<div class="flex justify-between items-center">
+  <div class="flex gap-2">
+    {categories.map((category) => <ArticleCategory category={category} />)}
+  </div>
+  <div class="text-base font-medium text-slate-600 dark:text-slate-400">
+    Published {moment(publicationDate).format("MMM Do[,] YYYY")}
+  </div>
+</div>

@@ -46,7 +46,7 @@
   }
 
   .article-md {
-    @apply prose prose-2xl text-slate-600 dark:text-slate-300;
+    @apply prose prose-2xl prose-p:text-slate-600  dark:prose-p:text-slate-300;
     @apply prose-h2:text-slate-700 dark:prose-h2:text-slate-300 prose-h2:my-4;
   }
 }

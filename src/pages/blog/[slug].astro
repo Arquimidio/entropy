@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import { calculateReadTime } from "../../utils/time";
 import ArticleCategory from "../../components/ArticleCategory.astro";
 import moment from "moment";
+import ArticleInfo from "../../components/ArticleInfo.astro";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
@@ -51,7 +52,7 @@ const { Content } = await post?.render();
         alt={post.data.title}
       />
       <div
-        class="text-center text-3xl text-slate-300 dark:text-slate-500 font-semibold my-10"
+        class="text-center text-3xl text-slate-400 dark:text-slate-500 font-semibold my-10"
       >
         {post.data.description}
       </div>
@@ -60,18 +61,10 @@ const { Content } = await post?.render();
     <div class="article-md w-full">
       <div class="content-grid">
         <div class="col-start-2">
-          <div class="flex justify-between items-center">
-            <div class="flex gap-2">
-              {
-                post.data.categories.map((category) => (
-                  <ArticleCategory category={category} />
-                ))
-              }
-            </div>
-            <div class="text-base font-medium">
-              Published {moment(post.data.date).format("MMM Do[,] YYYY")}
-            </div>
-          </div>
+          <ArticleInfo
+            categories={post.data.categories}
+            publicationDate={post.data.date}
+          />
           <Content />
         </div>
       </div>
