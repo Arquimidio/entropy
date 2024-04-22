@@ -3,8 +3,6 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { calculateReadTime } from "../../utils/time";
-import ArticleCategory from "../../components/ArticleCategory.astro";
-import moment from "moment";
 import ArticleInfo from "../../components/ArticleInfo.astro";
 
 export const getStaticPaths = async () => {
@@ -51,9 +49,7 @@ const { Content } = await post?.render();
         src={post.data.image}
         alt={post.data.title}
       />
-      <div
-        class="text-center text-3xl text-slate-400 dark:text-slate-500 font-semibold my-10"
-      >
+      <div class="text-center text-3xl text-slate-500 font-semibold my-10">
         {post.data.description}
       </div>
     </div>
