@@ -12,7 +12,7 @@ export default function CurrentSpotify() {
     return (
         <div className="flex flex-col gap-4">
             <div className="text-lg font-medium text-slate-800 dark:text-slate-200">🎧 I'm listening to</div>
-            <div className="flex items-center rounded-md overflow-hidden min-h-[75px]">
+            <div className="flex items-center rounded-md overflow-hidden min-h-[68px]">
                 <div className="w-[68px] rounded-md overflow-hidden">
                     <img className="max-w-full w-full" src={presenceData?.spotify?.album_art_url} alt="Spotify Album"/>
                 </div>

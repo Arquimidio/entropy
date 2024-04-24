@@ -2,7 +2,7 @@ export const prerender = false;
 import * as querystring from "node:querystring";
 import axios from "axios";
 
-const FAVORITE_SONGS_THRESHOLD = 6;
+const FAVORITE_SONGS_THRESHOLD = 8;
 let refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 let token: string | null = null;
 
@@ -53,11 +53,13 @@ export async function GET() {
     try {
         const tracks = await getSavedMusic();
 
-        return new Response(
-            JSON.stringify({
-                tracks: tracks?.items,
-            }),
-        );
+        if(tracks) {
+            return new Response(
+                JSON.stringify({
+                    tracks: tracks?.items,
+                }),
+            );
+        }
     } catch(error: any) {
         console.log(error);
 

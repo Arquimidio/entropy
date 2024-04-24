@@ -1,0 +1,40 @@
+---
+import moment from "moment";
+
+interface Props {
+  repo: any;
+}
+
+const repoNameToPhrase = (name: string) => {
+  return name.split("-").join(" ");
+};
+
+const { repo } = Astro.props;
+---
+
+<a
+  href={repo.html_url}
+  class="flex flex-col justify-between gap-4 border border-dashed p-5 rounded-md border-gray-400/65 dark:border-gray-800 relative"
+  target="_blank "
+>
+  <div>
+    <div class="flex justify-between">
+      <span class="capitalize font-medium text-slate-600 dark:text-slate-200"
+        >{repoNameToPhrase(repo.name)}</span
+      >
+      <span class="flex items-center">
+        <span>⭐</span>
+        <span>{repo.stargazers_count}</span>
+      </span>
+    </div>
+    <span class="text-slate-500 text-sm">{repo.description}</span>
+  </div>
+  <div>
+    <div class="text-xs flex justify-between">
+      <span class="text-slate-400 dark:text-slate-500"
+        >Updated {moment(repo.updated_at).fromNow()}</span
+      >
+      <span class="text-slate-600">{repo.language}</span>
+    </div>
+  </div>
+</a>

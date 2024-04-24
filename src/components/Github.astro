@@ -1,10 +1,19 @@
 ---
 import axios from "axios";
+import Repo from "./Repo.astro";
+
 const githubData = await axios
-  .get(import.meta.env.GITHUB_API_URL)
+  .get(`${import.meta.env.GITHUB_API_URL}?sort=updated&per_page=4`)
   .then((res) => res.data);
 ---
 
-<section>
-  <div>Github</div>
+<section class="flex flex-col gap-4 py-5">
+  <div
+    class="text-lg font-medium flex gap-3 text-slate-800 dark:text-slate-200"
+  >
+    🧱 Recent Projects
+  </div>
+  <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+    {githubData.map((repo: any) => <Repo repo={repo} />)}
+  </div>
 </section>
