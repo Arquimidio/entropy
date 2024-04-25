@@ -10,9 +10,8 @@ export default function usePresence(userDiscordId: string) {
             socket.send(JSON.stringify({
                 op: PresenceSocketOperation.Hearbeat
             }))
+
             console.log('THUMP THUMP');
-        } else {
-            console.log(`HEART STOPPED! Reason: ${socket.readyState}`);
         }
     }
 
@@ -52,7 +51,6 @@ export default function usePresence(userDiscordId: string) {
             }
 
             function handleClose() {
-                console.log('handling cleanup');
                 cleanup();
                 initialize();
             }

@@ -14,7 +14,8 @@ const { repo } = Astro.props;
 
 <a
   href={repo.html_url}
-  class="flex flex-col justify-between gap-4 border border-dashed p-5 rounded-md border-gray-400/65 dark:border-gray-800 relative"
+  class="flex flex-col justify-between gap-4 border
+  border-dashed p-5 rounded-md border-gray-400/65 dark:border-gray-800 hover:border-gray-600/65"
   target="_blank "
 >
   <div>
@@ -24,7 +25,9 @@ const { repo } = Astro.props;
       >
       <span class="flex items-center">
         <span>⭐</span>
-        <span>{repo.stargazers_count}</span>
+        <span class="text-slate-600 dark:text-slate-200"
+          >{repo.stargazers_count}</span
+        >
       </span>
     </div>
     <span class="text-slate-500 text-sm">{repo.description}</span>
@@ -34,7 +37,7 @@ const { repo } = Astro.props;
       <span class="text-slate-400 dark:text-slate-500"
         >Updated {moment(repo.updated_at).fromNow()}</span
       >
-      <span class="text-slate-600">{repo.language}</span>
+      <span class="text-slate-400 dark:text-slate-600">{repo.language}</span>
     </div>
   </div>
 </a>

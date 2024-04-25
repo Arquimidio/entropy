@@ -19,6 +19,8 @@ async function getFreshToken() {
         json: true
     };
 
+    console.log('REACHED THERE')
+
     return axios.post(
         `https://accounts.spotify.com/api/token`,
         querystring.stringify({
@@ -32,6 +34,7 @@ async function getFreshToken() {
 
 async function getSavedMusic() {
     const tracksUrl = import.meta.env.SPOTIFY_TRACKS_URL as string;
+    console.log('REACHED HERE')
     return axios.get(`${tracksUrl}?limit=${FAVORITE_SONGS_THRESHOLD}`, {
         headers: {
             Authorization: `Bearer ${token}`
