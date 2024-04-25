@@ -6,11 +6,12 @@ interface Props {
 const { track: trackContainer } = Astro.props;
 
 const { track } = trackContainer;
+console.log(track?.album?.images?.[0]?.url);
 ---
 
 <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
   <div class="flex gap-4 items-center">
-    <div class="w-[68px] rounded-md overflow-hidden flex-shrink-0">
+    <div class="w-[64px] rounded-md overflow-hidden flex-shrink-0">
       <img src={track?.album?.images?.[0]?.url} alt="track image" />
     </div>
     <div class="flex flex-col leading-3">
