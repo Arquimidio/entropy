@@ -3,9 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Sidebar from "../components/Sidebar.astro";
 import Main from "../components/Main.astro";
+import HeartStarter from "../components/React/HeartStarter";
 ---
 
 <Layout title="Entropy">
+  <HeartStarter client:load client:only="react" />
   <main class="flex flex-col gap-12 center-container">
     <Hero />
     <section class="flex flex-col gap-10 lg:flex-row">

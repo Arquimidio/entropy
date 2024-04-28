@@ -64,6 +64,5 @@ export default function usePresence(userDiscordId: string) {
         return initialize();
     }, [])
 
-
     return [presenceData, true] as [PresenceData, boolean];
 }

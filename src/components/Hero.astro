@@ -2,6 +2,7 @@
 import Icons from "./Icons.astro";
 import { Image } from "astro:assets";
 import Anime from "../images/anime.jpg";
+import MyStatus from "./React/MyStatus";
 ---
 
 <section
@@ -34,7 +35,9 @@ import Anime from "../images/anime.jpg";
       <Icons />
     </div>
   </div>
-  <div class="max-w-[300px] lg:max-w-[360px] h-min flex-shrink-1 my-5 md:my-0">
+  <div
+    class="max-w-[300px] lg:max-w-[360px] h-min flex-shrink-1 my-5 md:my-0 relative"
+  >
     <Image
       src={Anime}
       alt="Gabriel's anime representation"

@@ -1,9 +1,11 @@
 import usePresence from "../../hooks/usePresence";
 import MusicProgress from "./MusicProgress.tsx";
 import type { PresenceData } from "../../types/discordPresence";
+import { useStore } from "@nanostores/react";
+import { presence } from "../../store.ts";
 
 export default function CurrentSpotify() {
-    const [presenceData, isHeartStopped] = usePresence("1214266576573042708");
+    const { data: presenceData, isHeartStopped } = useStore(presence);
 
     if(!presenceData || !presenceData?.listening_to_spotify || !isHeartStopped) return null;
 
