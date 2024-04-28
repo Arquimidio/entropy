@@ -2,7 +2,8 @@ export const prerender = false;
 import * as querystring from "node:querystring";
 import axios from "axios";
 
-const FAVORITE_SONGS_THRESHOLD = 8;
+const FAVORITE_SONGS_THRESHOLD = 7;
+
 let refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 let token: string | null = null;
 
@@ -18,9 +19,7 @@ async function getFreshToken() {
         },
         json: true
     };
-
-    console.log('REACHED THERE')
-
+    
     return axios.post(
         `https://accounts.spotify.com/api/token`,
         querystring.stringify({
@@ -34,7 +33,6 @@ async function getFreshToken() {
 
 async function getSavedMusic() {
     const tracksUrl = import.meta.env.SPOTIFY_TRACKS_URL as string;
-    console.log('REACHED HERE')
     return axios.get(`${tracksUrl}?limit=${FAVORITE_SONGS_THRESHOLD}`, {
         headers: {
             Authorization: `Bearer ${token}`

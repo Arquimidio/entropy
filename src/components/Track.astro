@@ -6,7 +6,6 @@ interface Props {
 const { track: trackContainer } = Astro.props;
 
 const { track } = trackContainer;
-console.log(track?.album?.images?.[0]?.url);
 ---
 
 <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
