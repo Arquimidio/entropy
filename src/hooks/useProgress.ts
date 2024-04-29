@@ -30,5 +30,8 @@ export default function useProgress({
 
     const total = end - start;
 
-    return 100 - Math.floor((curPosition / total) * 100);
+    return {
+        percentage: 100 - Math.floor((curPosition / total) * 100),
+        startedAt
+    }
 }
