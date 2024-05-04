@@ -5,7 +5,6 @@ import { Image } from "astro:assets";
 import { calculateReadTime } from "../../utils/time";
 import ArticleInfo from "../../components/ArticleInfo.astro";
 import ScrollProgress from "../../components/React/ScrollProgress";
-import type { loadApp } from "astro/app/node";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");

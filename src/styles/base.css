@@ -46,7 +46,11 @@
   }
 
   .article-md {
-    @apply prose prose-2xl prose-p:text-slate-600  dark:prose-p:text-slate-300;
-    @apply prose-h2:text-slate-700 dark:prose-h2:text-slate-300 prose-h2:my-4;
+    @apply !text-slate-700 dark:!text-slate-300 my-12;
+    @apply prose prose-2xl;
+    @apply prose-h2:text-slate-700 dark:prose-h2:text-slate-300 prose-h2:my-12;
+    @apply prose-h3:text-slate-700 dark:prose-h3:text-slate-300 prose-h3:my-12;
+    @apply prose-strong:text-slate-700 dark:prose-strong:text-slate-200 prose-strong:font-medium;
+    @apply prose-img:rounded-md;
   }
 }
