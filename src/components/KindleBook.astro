@@ -1,0 +1,21 @@
+---
+interface Props {
+  book: any;
+}
+
+const { book } = Astro.props;
+
+console.log(book);
+---
+
+<a
+  href={`https://www.amazon.com/${book?.title?.split(" ").join("-")}/dp/${book.asin}`}
+  class="rounded-md overflow-hidden border dark:border-slate-600"
+  target="_blank"
+>
+  <img
+    class="rounded-md w-full h-full"
+    src={book?.imageUrl}
+    alt={`${book?.title} image`}
+  />
+</a>

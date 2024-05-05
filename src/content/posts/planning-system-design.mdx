@@ -55,11 +55,11 @@ the client and the server, the server and the database, etc. Latency can be miti
 It's important to consider the best fits for the product's goal:
 
 - What transport protocol should we use?
+- What communication protocol should we use?
 - What kind of storage would be the best: SQL or NoSQL?
+- What about Load Balancers?
 - Should we have a CDN?
-- Should we have a caching layer?
-- Should we have a Queue System?
-- Should we use a Load Balancer?
+- Do we need a message queue system?
 
 ## Diving Deeper
 
@@ -81,7 +81,11 @@ Here we have two choices, **TCP** or **UDP**. Again, it depends on your product 
 
 Having these in mind, we can choose the transport protocol to be implemented based on the product needs.
 
-### 2. "to SQL or to NoSQL" - Buda, probably
+### 2. What communication protocol should we use?
+
+Here we will focus on the dilemma on choosing between using HTTP and Websocket protocol. 
+
+### 3. "to SQL or to NoSQL" - Buda, probably
 
 To decide between both, you have to take into account what kind of data you're dealing with and also potential needs for horizontal scalability. The tradeoffs here are:
 
@@ -99,14 +103,39 @@ To decide between both, you have to take into account what kind of data you're d
 Scalability is a very important trait to consider when designing a system. Of course the amount of users that write to and read from your site will
 change over time, but you can make an estimation and decide based on it at first. SQL doesn't scale well horizontally because it follows the A.C.I.D principles for transactions to ensure they are Atomic, Consistent, Isolated and Durable. This doesn't work well when you have to keep data in multiple SQL databases.
 
-### 3. Should we have a CDN?
+### 4. What about Load Balancers?
 
-CDN stands for Content Delivery Network, that are basically servers that serve static content and are usually implemented to reduce latency for users. It's able to do it because the CDN to serve the user is usually the one that is geographically closer (not always, sometimes it doesn't have the requested content).
+The main goal of a load balancer is to distribute, based on an algorithm, server requests loads between multiple servers, avoiding overloading a single instance and also allowing the possibility to always send the same user requests to the same server instance based on consistent hashing.
+
+![Load Balancer representation diagram](./images/load-balancer.png)
+
+If you have just one server instance, you are at risk of overloading that server, making it's responses slow to all the users if it starts to receive too many requests. Also, having just one instance means your product is more susceptible to fails and unavailability. Having multiple server instances with a load balancer mitigates these problems and allows for horizontal scalability.
+
+Given these facts, it's always important to consider implementing a load balancer layer between your clients and your servers to allow for a better user experience and mitigate the effects of critical fails, avoiding bringing down the product completely.
+
+
+### 5. Should we have a CDN?
+
+CDN stands for Content Delivery Network, that are basically servers that serve static content and are usually implemented to reduce latency for users. It's able to do it because the CDN to serve the user is usually the one that is geographically closer (not always, sometimes it doesn't have the requested content). It uses caching strategies to store a copy of the data, which avoids the need to query the origin server every time a user makes a request to the CDN
 
 Since CDNs can only serve static content, in other words, content that doesn't change over time, they are limited on usability, so depending on the kind of content you'd like to make available, CDNs might not be the choice 
 
 ![Content Delivery Network representation diagram](./images/cdn.png)
 
 So the biggest advantages you can achieve using a CDN are basically increasing the system's reliability (if it crashes, CDN will still serve the content) and availability (if the server is unavailable for maintenance reasons, the content will still be served)
+
+### 6. Do we need a message queue system?
+
+This really depends on the amount of expect you expect to be dealing with. If you have a fast paced back-end environment with a lot of events happening all around (e.g: receiving / responding to different messages from multiple third party providers), you might consider to implement a message queue to organize the events flow, define processing priorities, etc.
+
+This allows you to handle large amounts of data / requests coming from multiple places. When the server process a message coming from the queue, it will send an acknowledgment message to the queue, stating that the data was received and that the operation was successful. If the queue doesn't receive this acknowledgment message, it will try to send the same message again.
+
+Another cool fact about message queues is that they persist your messages if your server goes down. So if you have a critical fail, you will not lose the queue messages. This, together with the acknowledgment messages, enables the server to come back to the messages to the point where it left them when the fail happened.
+
+## Other important points
+
+- Compliance and regulations
+- Localization and internationalization
+- Documentation and knowledge sharing
 
 After diving deep into the plan, you should come back to the surface with a valuable treasure, the mental blueprint for a system adapted to the needs of the product you're going to build. Now take off your flippers and let's bring it to life!

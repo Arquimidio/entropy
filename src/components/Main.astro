@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Blog from "./Blog.astro";
 import Github from "./Github.astro";
+import Kindle from "./Kindle.astro";
 
 const posts = await getCollection("posts");
 ---
@@ -15,7 +16,8 @@ const posts = await getCollection("posts");
   <div class="flex flex-col gap-5">
     <Blog posts={posts} />
   </div>
-  <div>
+  <div class="mb-5">
     <Github />
+    <Kindle />
   </div>
 </div>

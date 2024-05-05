@@ -1,0 +1,10 @@
+---
+import { GET } from "../pages/kindle";
+import KindleBook from "./KindleBook.astro";
+
+const response = await GET().then((response: any) => response?.json());
+---
+
+<div class="grid grid-cols-5 gap-5">
+  {response?.books?.map((book: any) => <KindleBook book={book} />)}
+</div>
