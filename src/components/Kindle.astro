@@ -6,7 +6,7 @@ const response = await GET().then((response: any) => response?.json());
 ---
 
 {
-  response?.length ? (
+  response?.books?.length ? (
     <div class="flex flex-col gap-4">
       <div class="text-lg font-medium flex gap-3 text-slate-800 dark:text-slate-200">
         📚 My Readings
