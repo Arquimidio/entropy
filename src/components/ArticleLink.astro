@@ -71,7 +71,7 @@ const { post } = Astro.props;
 
     article.addEventListener("mouseleave", () => {
       if (annotation) {
-        annotation.hide();
+        annotation.remove();
       }
     });
   });
