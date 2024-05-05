@@ -54,7 +54,7 @@ const { post } = Astro.props;
   import { annotate } from "rough-notation";
 
   document.querySelectorAll(".article-container").forEach((article) => {
-    let annotation;
+    let annotation: any;
 
     article.addEventListener("mouseenter", (event: any) => {
       const title = event?.target?.querySelector("h2");
@@ -67,6 +67,12 @@ const { post } = Astro.props;
       });
 
       annotation.show();
+    });
+
+    article.addEventListener("mouseleave", () => {
+      if (annotation) {
+        annotation.hide();
+      }
     });
   });
 </script>
