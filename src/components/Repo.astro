@@ -21,7 +21,8 @@ const { repo } = Astro.props;
 >
   <div>
     <div class="flex justify-between">
-      <span class="capitalize font-medium text-slate-600 dark:text-slate-200"
+      <span
+        class="capitalize font-medium text-lg text-slate-600 dark:text-slate-300 truncate"
         >{repoNameToPhrase(repo.name)}</span
       >
       <div class="flex gap-2">

@@ -15,14 +15,18 @@ const { track } = trackContainer;
 >
   <div class="flex gap-4 items-center">
     <div class="w-[64px] rounded-md overflow-hidden flex-shrink-0">
-      <img src={track?.album?.images?.[0]?.url} alt="track image" />
+      <img
+        class="aspect-square object-cover w-full h-full"
+        src={track?.album?.images?.[0]?.url}
+        alt="track image"
+      />
     </div>
     <div class="flex flex-col leading-3">
       <span
         class="text-sm font-semibold text-slate-600 dark:text-slate-300 line-clamp-1"
         >{track?.name}</span
       >
-      <span class="text-sm text-slate-400 dark:text-slate-500 line-clamp-1"
+      <span class="text-sm text-slate-500 line-clamp-1"
         >{track?.artists?.[0]?.name}</span
       >
     </div>
