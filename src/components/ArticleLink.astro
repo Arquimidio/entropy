@@ -13,11 +13,11 @@ const { post } = Astro.props;
 
 <a href={`blog/${post.slug}`}>
   <article
-    class="group flex justify-between pl-5 border border-gray-400/65 dark:border-gray-800 gap-10 rounded-md min-h-32"
+    class="group flex justify-between pl-5 border border-gray-400/65 dark:border-gray-800 gap-10 rounded-md min-h-32 article-container"
   >
     <div class="flex flex-col flex-grow justify-center py-2">
       <h2
-        class="text-xl font-medium line-clamp-2 text-slate-700 dark:text-slate-200 group-hover:first:text-rose-500"
+        class="text-xl font-medium line-clamp-2 text-slate-700 dark:text-slate-200 w-fit"
       >
         {post.data.title}
       </h2>
@@ -50,3 +50,23 @@ const { post } = Astro.props;
     </div>
   </article>
 </a>
+<script>
+  import { annotate } from "rough-notation";
+
+  document.querySelectorAll(".article-container").forEach((article) => {
+    let annotation;
+
+    article.addEventListener("mouseenter", (event: any) => {
+      const title = event?.target?.querySelector("h2");
+
+      if (!title) return;
+
+      annotation = annotate(title, {
+        type: "highlight",
+        color: "lightgrey",
+      });
+
+      annotation.show();
+    });
+  });
+</script>
