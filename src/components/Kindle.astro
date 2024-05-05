@@ -5,6 +5,13 @@ import KindleBook from "./KindleBook.astro";
 const response = await GET().then((response: any) => response?.json());
 ---
 
-<div class="grid grid-cols-5 gap-5">
-  {response?.books?.map((book: any) => <KindleBook book={book} />)}
+<div class="flex flex-col gap-4">
+  <div
+    class="text-lg font-medium flex gap-3 text-slate-800 dark:text-slate-200"
+  >
+    📚 My Readings
+  </div>
+  <div class="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-5">
+    {response?.books?.map((book: any) => <KindleBook book={book} />)}
+  </div>
 </div>
