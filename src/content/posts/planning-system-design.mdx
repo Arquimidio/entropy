@@ -19,16 +19,15 @@ have to be taken into account, and these are the **functional** and **non-functi
 ### 1. Functional Aspects
 
 Here we consider what kinds of functionalities the product should have. For example, let's say we're designing twitter. We must have functionalities
-to handle creating and reading a tweet, commenting on it, liking it, etc. 
+to handle creating and reading a tweet, commenting on it, liking it, etc. These can be split into *user requirements, business requirements and system requirements*
 
-The idea is to ask ourselves **how do we want the application to function?**, and this is closely related to what's the product main goal. Is it enabling people to communicate to each other with short texts? Is it to provide a highly flexible app where people can create and customize their servers?
+The idea is to ask ourselves **what functionalities should the application have?**, and this is closely related to what's the product main goal. Is it enabling people to communicate to each other with short texts? Is it to provide a highly flexible app where people can create and customize their servers?
 
 After answering this question, we should be able to foresee what are the main functionalities necessary to achieve the desired result.
 
 ### 2. Non-Functional Aspects
 
-Now that we know what is necessary to achieve the product's purpose, it's time to think about what is necessary to bring the idea to life
-and keep it breathing. Here we try to estimate, based on the product purpose, what hardware and software components will make up the system. 
+Now that we know what is necessary to achieve the product's purpose, it's time to think about how to keep the system breathing after bringing it to life. It is related to how well the system will perform. Here we try to estimate, based on the product purpose, what hardware and software components will make up the system, what are the qualities / characteristics
 
 When thinking about the non-functional
 aspect of the product we should take some concepts into account to better know what decisions to take next and what tradeoffs will be involved. These concepts
@@ -80,6 +79,8 @@ Here we have two choices, **TCP** or **UDP**. Again, it depends on your product 
     - Not super realiable. If you lose packets, they are gone forever (on some kinds of applications, this is not a big issue)
 
 Having these in mind, we can choose the transport protocol to be implemented based on the product needs.
+
+![TCP and UDP diagram](./images/tcp-udp.png)
 
 ### 2. What communication protocol should we use?
 
@@ -137,5 +138,10 @@ Another cool fact about message queues is that they persist your messages if you
 - Compliance and regulations
 - Localization and internationalization
 - Documentation and knowledge sharing
+- Caching
+- Logging
+- Security
+- Maintainability
 
 After diving deep into the plan, you should come back to the surface with a valuable treasure, the mental blueprint for a system adapted to the needs of the product you're going to build. Now take off your flippers and let's bring it to life!
+ 
