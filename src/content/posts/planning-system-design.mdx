@@ -8,13 +8,13 @@ title: You wouldn't build a bridge without proper planning
 description: So why do you do this to your system?
 ---
 
-Bridges are a great analogy for system design. They are both complex structures that require careful planning and design to ensure they are safe and reliable. Just as you wouldn't build a bridge without a detailed blueprint, you shouldn't build a system without proper planning. Here i'll
-list and explain the main aspects you have to take into account when designing a system.
+Imagine a bridge designed to handle a specific amount of traffic. Just like a system, it needs careful planning to ensure smooth operation.  The roadway represents the system's functionality, allowing users to move from point A to B. The supports, like the bridge's pillars, represent the underlying infrastructure that keeps everything running. Traffic flow represents user activity and data volume. We can even imagine toll booths as security measures in the system.
+
+The key is to design a bridge (or system) that can handle the expected load. A well-designed bridge can adapt to changing traffic patterns, similar to how a scalable system can accommodate increasing user demands. However, a poorly planned bridge can collapse under too much weight, just like a system failure can lead to data loss or service disruption.
 
 ## Breaking down the idea
 
-After having a solid idea of what is the product's main point, it's time to think about the higher levels of it's system design. Usually there are two main aspects that
-have to be taken into account, and these are the **functional** and **non-functional** aspects of the product.
+After having a solid idea of what is the product's main point, it's time to think about the higher levels of it's system design. Usually there are two main aspects that have to be taken into account, and these are the **functional** and **non-functional** aspects of the product.
 
 ### 1. Functional Aspects
 
@@ -79,8 +79,6 @@ Here we have two choices, **TCP** or **UDP**. Again, it depends on your product 
     - Not super realiable. If you lose packets, they are gone forever (on some kinds of applications, this is not a big issue)
 
 Having these in mind, we can choose the transport protocol to be implemented based on the product needs.
-
-![TCP and UDP diagram](./images/tcp-udp.png)
 
 ### 2. What communication protocol should we use?
 
