@@ -11,8 +11,9 @@ export default function useProgress({
     start,
     end,
 }: ProgressProps) {
-    const startedAt = Date.now();
-    const [curPosition, setCurPosition] = useState(end - startedAt);
+    console.log(start, end);
+    const curTime = Date.now();
+    const [curPosition, setCurPosition] = useState(end - curTime);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -22,16 +23,15 @@ export default function useProgress({
         return () => {
             clearInterval(interval);
         }
-    }, [start, end, startedAt])
+    }, [start, end])
 
     useEffect(() => {
-        setCurPosition(end - startedAt);
-    }, [start, end, startedAt])
+        setCurPosition(end - curTime);
+    }, [start, end])
 
     const total = end - start;
 
     return {
         percentage: 100 - Math.floor((curPosition / total) * 100),
-        startedAt
     }
 }

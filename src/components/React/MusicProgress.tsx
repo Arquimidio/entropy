@@ -14,14 +14,14 @@ export default function MusicProgress({
 
     const {
         percentage: progressPercentage,
-        startedAt
     } = useProgress({
         start,
         end,
     });
 
-    const elapsed = moment(Date.now() - start).format('mm[:]ss');
-    const remaining = moment(end - startedAt).format('mm[:]ss');
+    const curTime = Date.now();
+    const elapsed = moment(curTime - start).format('mm[:]ss');
+    const remaining = moment(end - curTime).format('mm[:]ss');
 
     return (
         <div>
