@@ -1,0 +1,17 @@
+---
+import { GET } from "../pages/watching";
+import Show from "./Show.astro";
+
+const response = await GET().then((response: any) => response?.json());
+console.log(response?.shows?.anime);
+---
+
+{
+  response?.shows?.anime ? (
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-5">
+      {response?.shows?.anime.map((anime: any) => (
+        <Show show={anime} />
+      ))}
+    </div>
+  ) : null
+}

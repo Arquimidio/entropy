@@ -1,0 +1,16 @@
+---
+interface Props {
+  show: any;
+}
+
+const { show: item } = Astro.props;
+---
+
+<div>
+  <img
+    class="rounded-md w-full h-full aspect-[1] object-cover"
+    src={`${import.meta.env.SIMKL_POSTER_URL}${item?.show?.poster}_0.jpg`}
+  />
+  <div>{item?.show?.title}</div>
+  <div>{item?.last_watched_at}</div>
+</div>

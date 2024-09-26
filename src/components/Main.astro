@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Blog from "./Blog.astro";
 import Github from "./Github.astro";
 import Kindle from "./Kindle.astro";
+import Shows from "./Shows.astro";
 
 const posts = await getCollection("posts");
 ---
@@ -19,5 +20,6 @@ const posts = await getCollection("posts");
   <div class="mb-5">
     <Github />
     <Kindle />
+    <Shows />
   </div>
 </div>

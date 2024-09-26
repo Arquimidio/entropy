@@ -120,7 +120,7 @@ So the biggest advantages you can achieve using a CDN are basically increasing t
 
 ### 7. Do we need a message queue system?
 
-This really depends on the amount of expect you expect to be dealing with. If you have a fast paced back-end environment with a lot of events happening all around (e.g: receiving / responding to different messages from multiple third party providers), you might consider to implement a message queue to organize the events flow, define processing priorities, etc.
+This really depends on the amount of data you expect to be dealing with. If you have a fast paced back-end environment with a lot of events happening all around (e.g: receiving / responding to different messages from multiple third party providers), you might consider to implement a message queue to organize the events flow, define processing priorities, etc.
 
 This allows you to handle large amounts of data / requests coming from multiple places. When the server process a message coming from the queue, it will send an acknowledgment message to the queue, stating that the data was received and that the operation was successful. If the queue doesn't receive this acknowledgment message, it will try to send the same message again.
 

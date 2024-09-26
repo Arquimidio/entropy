@@ -11,7 +11,6 @@ export default function useProgress({
     start,
     end,
 }: ProgressProps) {
-    console.log(start, end);
     const curTime = Date.now();
     const [curPosition, setCurPosition] = useState(end - curTime);
 
