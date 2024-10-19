@@ -1,4 +1,3 @@
-import usePresence from "../../hooks/usePresence";
 import MusicProgress from "./MusicProgress.tsx";
 import type { PresenceData } from "../../types/discordPresence";
 import { useStore } from "@nanostores/react";
