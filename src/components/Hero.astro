@@ -2,6 +2,8 @@
 import Icons from "./Icons.astro";
 import { Image } from "astro:assets";
 import Anime from "../images/anime.jpg";
+import MyStatus from "./React/MyStatus";
+import moment from "moment";
 ---
 
 <section
@@ -35,12 +37,29 @@ import Anime from "../images/anime.jpg";
     </div>
   </div>
   <div
-    class="max-w-[300px] lg:max-w-[360px] h-min flex-shrink-1 my-5 md:my-0 relative"
+    class="max-w-[300px] lg:max-w-[360px] h-min flex-shrink-1 my-5 md:my-0 relative overflow-hidden"
   >
     <Image
       src={Anime}
       alt="Gabriel's anime representation"
       class="rounded-md flex-grow-0 h-full w-full aspect-ratio"
     />
+    <div
+      class="absolute flex justify-between items-center bottom-0 left-0 bg-zinc-100 dark:bg-zinc-900 px-2 py-1 w-full rounded-b-sm"
+    >
+      <MyStatus client:load client:only="react" />
+      <div class="flex items-center gap-1 text-[12px] font-semibold">
+        <span>{moment().isAfter(moment().set("hours", 17)) ? "🌙" : "☀️"}</span>
+        <span>
+          <span class="text-slate-800 dark:text-white"
+            >{moment().format("HH")}</span
+          >
+          <span class="animate-pulse text-slate-800 dark:text-white">:</span>
+          <span class="text-slate-800 dark:text-white"
+            >{moment().format("mm")}</span
+          >
+        </span>
+      </div>
+    </div>
   </div>
 </section>

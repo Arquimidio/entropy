@@ -3,7 +3,6 @@ import { GET } from "../pages/watching";
 import Show from "./Show.astro";
 
 const response = await GET().then((response: any) => response?.json());
-console.log(response?.shows?.anime);
 ---
 
 {

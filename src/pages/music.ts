@@ -27,8 +27,9 @@ async function getFreshToken() {
             refresh_token: refreshToken
         }),
         authOptions
-    ).then(res => res.data.access_token)
-        .catch((err) => console.log('It broke on getting fresh token', err));
+    )
+    .then(res => res.data.access_token)
+    .catch((err) => console.log('It broke on getting fresh token'));
 }
 
 async function getSavedMusic() {
@@ -38,8 +39,8 @@ async function getSavedMusic() {
             Authorization: `Bearer ${token}`
         }
     })
-        .then((res) => res.data)
-        .catch((e) => console.log('It broke on getting saved music', e));
+    .then((res) => res.data)
+    .catch((e) => console.log('It broke on getting saved music'));
 }
 
 export async function GET() {
@@ -47,7 +48,7 @@ export async function GET() {
         try  {
             token = await getFreshToken();
         } catch(error) {
-            console.log(error);
+            console.log('Fail total');
         }
     }
 
@@ -62,8 +63,6 @@ export async function GET() {
             );
         }
     } catch(error: any) {
-        console.log(error);
-
         if(error.response.status === 401) {
                 token = await getFreshToken();
                 await GET();

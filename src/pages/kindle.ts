@@ -5,6 +5,7 @@ async function getBooks() {
     return axios
         .get(import.meta.env.ME_KINDLE_SERVER_URL)
         .then((res) => res.data)
+        .catch((e) => console.log('Fail'))
 }
 
 export async function GET() {
@@ -19,6 +20,6 @@ export async function GET() {
             );
         }
     } catch(error: any) {
-        console.log(error);
+        console.log('Kindle Fail');
     }
 }
