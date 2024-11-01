@@ -11,6 +11,7 @@ async function getWatchingShows() {
             }
         })
         .then((res) => res.data)
+        .catch(() => console.log('fail'))
 }
 
 export async function GET() {

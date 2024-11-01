@@ -29,7 +29,7 @@ async function getFreshToken() {
         authOptions
     )
     .then(res => res.data.access_token)
-    .catch((err) => console.log('It broke on getting fresh token'));
+    .catch(() => console.log('It broke on getting fresh token'));
 }
 
 async function getSavedMusic() {
@@ -40,7 +40,7 @@ async function getSavedMusic() {
         }
     })
     .then((res) => res.data)
-    .catch((e) => console.log('It broke on getting saved music'));
+    .catch(() => console.log('It broke on getting saved music'));
 }
 
 export async function GET() {

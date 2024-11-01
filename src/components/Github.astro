@@ -5,6 +5,8 @@ import Repo from "./Repo.astro";
 const githubData = await axios
   .get(`${import.meta.env.GITHUB_API_URL}?sort=updated&per_page=4`)
   .then((res) => res.data);
+
+if (!githubData) return null;
 ---
 
 <section class="flex flex-col gap-4 py-5">
