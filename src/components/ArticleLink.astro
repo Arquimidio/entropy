@@ -17,21 +17,21 @@ const { post } = Astro.props;
   >
     <div class="flex flex-col flex-grow justify-center py-2 overflow-hidden">
       <h2
-        class="text-xl font-medium line-clamp-2 text-slate-700 dark:text-slate-200 w-fit pl-5"
+        class="text-xl font-medium line-clamp-2 text-slate-700 dark:text-slate-200 w-fit ml-5"
       >
         {post.data.title}
       </h2>
-      <span class="font-thin text-gray-600 dark:text-gray-400 pl-5"
+      <span class="font-thin text-gray-600 dark:text-gray-400 ml-5"
         >{post.data.description}</span
       >
-      <span class="text-sm text-gray-600 pl-5"
+      <span class="text-sm text-gray-600 ml-5"
         >Posted {moment(post.data.date).fromNow()}</span
       >
       <div
         class="w-full h-[1px] bg-gradient-to-r from-slate-300 dark:from-slate-800 to-transparent my-2"
       >
       </div>
-      <div class="text-xs flex gap-4 pl-5">
+      <div class="text-xs flex gap-4 ml-5">
         <span class="text-slate-800 dark:text-slate-300"
           >{calculateReadTime(post.body)} min read</span
         >
@@ -66,9 +66,8 @@ const { post } = Astro.props;
 
       annotation = annotate(title, {
         type: "highlight",
-        color: "rgb(225, 29, 72, 0.5)",
-        padding: [0, 0, 0, -356],
-        iterations: 1,
+        color: "rgb(225, 29, 72, 0.75)",
+        iterations: 2,
       });
 
       annotation.show();
