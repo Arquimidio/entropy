@@ -4,7 +4,7 @@ export const useHeatRate = () => {
   const [bpm, setBpm] = useState(null);
 
   useEffect(() => {
-    const socket = new WebSocket('ws://137.184.96.61:4747/ws');
+    const socket = new WebSocket('wss://www.stoppapi.xyz/ws');
 
     const handleSocketMessage = (msg: any) => {
       const data = JSON.parse(msg.data);
