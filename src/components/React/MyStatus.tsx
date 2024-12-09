@@ -39,14 +39,6 @@ export default function MyStatus() {
           "w-[6px] h-[6px] rounded-full animate-pulse",
         )}
       ></div>
-      <span
-        className={clsx(
-          "capitalize text-[12px] font-semibold",
-          currentStatus.text,
-        )}
-      >
-        {status}
-      </span>
     </div>
   );
 }

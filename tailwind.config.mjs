@@ -25,6 +25,7 @@ export default {
       colors: {
         light: "#ebebeb",
         dark: "#0e1016",
+        barBlue: "#131416",
       },
     },
     applyBaseStyles: false,

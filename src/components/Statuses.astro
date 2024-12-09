@@ -1,0 +1,21 @@
+---
+import MyHeartRate from "./React/MyHeartRate";
+import MyStatus from "./React/MyStatus";
+import MyTime from "./React/MyTime";
+---
+
+<div
+class="absolute flex justify-between items-center bottom-0 left-0 w-full bg-zinc-100 dark:bg-barBlue rounded-b-md px-5 py-1"
+>
+<div
+  class="marker:rounded-bl-lg rounded-tr-md"
+>
+  <MyStatus client:load client:only="react" />
+</div>
+<div>
+  <MyTime client:load client:only="react" />
+</div>
+<div>
+  <MyHeartRate client:load client:only="react" />
+</div>
+</div>

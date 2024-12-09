@@ -39,11 +39,15 @@
 
   .light-pattern {
     background-image: url('../images/circuit-board-light.svg');
+    filter: brightness(1.4); 
   }
-
+  
   .dark-pattern {
     background-image: url('../images/circuit-board-dark.svg');
+    filter: brightness(0.6); 
   }
+  
+  
 
   .article-md {
     @apply !text-slate-700 dark:!text-slate-300 my-12;
