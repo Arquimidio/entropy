@@ -32,6 +32,8 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.12",
-    "@types/ws": "^8.5.10"
+    "@types/ws": "^8.5.10",
+    "prettier": "3.4.2",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }
