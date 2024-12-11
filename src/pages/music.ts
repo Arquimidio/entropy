@@ -2,7 +2,7 @@ export const prerender = false;
 import * as querystring from "node:querystring";
 import axios from "axios";
 
-const FAVORITE_SONGS_THRESHOLD = 10;
+const FAVORITE_SONGS_THRESHOLD = 9;
 
 let refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 let token: string | null = null;
